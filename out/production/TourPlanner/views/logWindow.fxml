@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="568.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.LogWindowController">
+   <children>
+      <HBox prefHeight="8.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="66.0" text="Date" HBox.hgrow="NEVER">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="dateField" prefHeight="25.0" prefWidth="211.0" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="66.0" text="Report">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="reportField" layoutX="81.0" layoutY="10.0" prefHeight="25.0" prefWidth="211.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="-5.0" layoutY="44.0" prefHeight="8.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="35.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="66.0" text="Distance" HBox.hgrow="NEVER">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="distanceField" prefHeight="25.0" prefWidth="211.0" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="66.0" text="Time">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="timeField" layoutX="81.0" layoutY="10.0" prefHeight="25.0" prefWidth="211.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="45.0" prefHeight="8.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="65.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="66.0" text="Rating" HBox.hgrow="NEVER">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="ratingField" prefHeight="25.0" prefWidth="211.0" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="66.0" text="Weather">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="weatherField" layoutX="81.0" layoutY="10.0" prefHeight="25.0" prefWidth="211.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="75.0" prefHeight="8.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="95.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="66.0" text="Av. Speed" HBox.hgrow="NEVER">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="avSpeedField" prefHeight="25.0" prefWidth="211.0" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="66.0" text="Altitude">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="altitudeField" layoutX="81.0" layoutY="10.0" prefHeight="25.0" prefWidth="211.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="105.0" prefHeight="8.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="125.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="66.0" text="Difficulty" HBox.hgrow="NEVER">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="difficultyField" prefHeight="25.0" prefWidth="211.0" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="66.0" text="Calories">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="caloriesField" layoutX="81.0" layoutY="10.0" prefHeight="25.0" prefWidth="211.0" />
+         </children>
+      </HBox>
+      <Button fx:id="addButton" layoutX="502.0" layoutY="361.0" mnemonicParsing="false" onAction="#addLog" prefHeight="25.0" prefWidth="56.0" text="Add" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+   </children>
+</AnchorPane>

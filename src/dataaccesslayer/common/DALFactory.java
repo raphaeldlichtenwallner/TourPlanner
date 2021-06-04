@@ -37,7 +37,7 @@ public class DALFactory {
 
     public static ITourItemDAO CreateTourItemDAO() {
         try {
-            Class<TourItemPostgresDAO> cls = (Class<TourItemPostgresDAO>) Class.forName(TourLogPostgresDAO.class.getName());
+            Class<TourItemPostgresDAO> cls = (Class<TourItemPostgresDAO>) Class.forName(TourItemPostgresDAO.class.getName());
             return cls.getConstructor().newInstance();
         } catch (Exception e) {
             e.printStackTrace();

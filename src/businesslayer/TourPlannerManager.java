@@ -10,6 +10,15 @@ import java.util.List;
 public interface TourPlannerManager {
     List<TourItem> GetItems() throws SQLException;
     List<TourItem> Search(String itemName, boolean caseSensitive) throws SQLException;
-    TourItem CreateTourItem(String name, String url, LocalDateTime creationDate) throws SQLException;
-    TourLog CreateTourLog(String logText, TourItem item) throws SQLException;
+    TourItem CreateTourItem(String name, String description, String distance, String start, String end) throws SQLException;
+    TourItem UpdateTourItem(Integer id, String name, String description, String distance, String start, String end) throws SQLException;
+    TourLog CreateTourLog(TourLog log, TourItem item) throws SQLException;
+    TourLog UpdateLogItem(TourLog genLog, Integer id) throws SQLException;
+    void DeleteTour(TourItem item);
+    void DeleteLog(TourLog log);
+    TourItem GetItem(Integer id) throws SQLException;
+
+    List<TourLog> GetLogs(TourItem newValue) throws SQLException;
+
+
 }

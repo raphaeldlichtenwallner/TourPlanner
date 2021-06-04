@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.TourWindowController">
+   <children>
+      <HBox layoutY="2.0" prefHeight="8.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="66.0" text="Tour Name" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="nameField" prefHeight="25.0" prefWidth="523.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox layoutY="27.0" prefHeight="8.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="35.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="66.0" text="Start Point" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="startField" prefHeight="25.0" prefWidth="523.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox layoutY="52.0" prefHeight="8.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="65.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="66.0" text="End Point" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="endField" prefHeight="25.0" prefWidth="523.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox layoutY="101.0" prefHeight="211.0" prefWidth="600.0" AnchorPane.rightAnchor="14.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="66.0" text="Description" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <TextArea fx:id="descriptionField" prefHeight="200.0" prefWidth="317.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <Button fx:id="addButton" layoutX="530.0" layoutY="361.0" mnemonicParsing="false" onAction="#addAction" prefHeight="25.0" prefWidth="56.0" text="Add" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+   </children>
+</AnchorPane>

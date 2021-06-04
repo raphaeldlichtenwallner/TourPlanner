@@ -1,74 +1,113 @@
 package views;
 
-import businesslayer.NameGenerator;
-import businesslayer.TourPlannerManager;
-import businesslayer.TourPlannerManagerFactory;
-import dataaccesslayer.common.DALFactory;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import lombok.SneakyThrows;
 import models.TourItem;
 import models.TourLog;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class MainWindowController implements Initializable {
     public TextField searchField;
     public ListView<TourItem> listTourItems;
+    public Label description;
+    public ImageView route;
 
-    private ObservableList<TourItem> tourItems;
-    private TourItem currentItem;
-    private TourPlannerManager manager;
 
-    public void searchAction(ActionEvent actionEvent) throws SQLException {
-        tourItems.clear();
+    public Label titleName;
 
-        List<TourItem> items = manager.Search(searchField.textProperty().getValue(), false);
-        tourItems.addAll(items);
+
+    public TableView<TourLog> table;
+
+    public MainViewModel mainViewModel = new MainViewModel();
+    public Button editLog;
+    public Button addLog;
+    public Button removeTour;
+    public Button editTour;
+    public Button removeLog;
+    public TableColumn<TourLog,String> date;
+    public TableColumn<TourLog,String> report;
+    public TableColumn<TourLog,String> distance;
+    public TableColumn<TourLog,String> time;
+    public TableColumn<TourLog,String> rating;
+    public TableColumn<TourLog,String> weather;
+    public TableColumn<TourLog,String> speed;
+    public TableColumn<TourLog,String> altitude;
+    public TableColumn<TourLog,String> difficulty;
+    public TableColumn<TourLog,String> calories;
+
+
+
+    public MainWindowController() throws SQLException {
     }
 
-    public void clearAction(ActionEvent actionEvent) throws SQLException {
-        tourItems.clear();
-        searchField.textProperty().setValue("");
-
-        List<TourItem> items = manager.GetItems();
-        tourItems.addAll(items);
+    public void searchAction() throws SQLException {
+        mainViewModel.searchAction();
     }
 
-    public void genItemAction(ActionEvent actionEvent) throws SQLException {
-        TourItem genItem = manager.CreateTourItem(NameGenerator.GenerateName(4), NameGenerator.GenerateName(8), LocalDateTime.now());
-        tourItems.add(genItem);
+    public void clearAction() throws SQLException {
+        mainViewModel.clearAction();
     }
 
-    public void genLogAction(ActionEvent actionEvent) throws SQLException {
-        TourLog genLog = manager.CreateTourLog(NameGenerator.GenerateName(40), currentItem);
+    public void genItemAction() throws IOException {
+        mainViewModel.genItemAction();
+    }
+
+    public void genLogAction() throws SQLException, IOException {
+        mainViewModel.genLogAction();
+    }
+
+    public void removeItemAction() throws SQLException {
+        mainViewModel.removeItemAction();
+    }
+
+    public void editItemAction() throws IOException {
+        mainViewModel.editItemAction();
+    }
+
+    public void removeLogAction() throws SQLException {
+        mainViewModel.removeLogAction(table.getSelectionModel().getSelectedItem());
+    }
+
+    public void editLogAction() throws IOException {
+        mainViewModel.editLogAction(table.getSelectionModel().getSelectedItem());
     }
 
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        manager = TourPlannerManagerFactory.getManager();
-
-        SetupListView();
+        Bindings.bindBidirectional(searchField.textProperty(), mainViewModel.getSearch());
+        Bindings.bindBidirectional(titleName.textProperty(), mainViewModel.getTitle());
+        Bindings.bindBidirectional(description.textProperty(), mainViewModel.getDescription());
+        Bindings.bindBidirectional(route.imageProperty(), mainViewModel.getRoute());
+        table.setItems(mainViewModel.getTourLogs());
+        date.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        report.setCellValueFactory(new PropertyValueFactory<>("Report"));
+        distance.setCellValueFactory(new PropertyValueFactory<>("Distance"));
+        time.setCellValueFactory(new PropertyValueFactory<>("Time"));
+        rating.setCellValueFactory(new PropertyValueFactory<>("Rating"));
+        weather.setCellValueFactory(new PropertyValueFactory<>("Weather"));
+        speed.setCellValueFactory(new PropertyValueFactory<>("Speed"));
+        altitude.setCellValueFactory(new PropertyValueFactory<>("Altitude"));
+        difficulty.setCellValueFactory(new PropertyValueFactory<>("Difficulty"));
+        calories.setCellValueFactory(new PropertyValueFactory<>("Calories"));
+        listTourItems.setItems(mainViewModel.getTourItems());
+        listTourItems.getSelectionModel().selectedItemProperty().addListener(mainViewModel.getChangeListener());
+        editTour.disableProperty().bind(listTourItems.getSelectionModel().selectedItemProperty().isNull());
+        removeTour.disableProperty().bind(listTourItems.getSelectionModel().selectedItemProperty().isNull());
+        addLog.disableProperty().bind(listTourItems.getSelectionModel().selectedItemProperty().isNull());
+        editLog.disableProperty().bind(table.getSelectionModel().selectedItemProperty().isNull());
+        removeLog.disableProperty().bind(table.getSelectionModel().selectedItemProperty().isNull());
         FormatCells();
-        SetCurrentItem();
-    }
-
-    private void SetupListView() throws SQLException {
-        tourItems = FXCollections.observableArrayList();
-        tourItems.addAll(manager.GetItems());
-        listTourItems.setItems(tourItems);
     }
 
     private void FormatCells() {
@@ -83,14 +122,6 @@ public class MainWindowController implements Initializable {
                 } else {
                     setText(item.getName());
                 }
-            }
-        }));
-    }
-
-    private void SetCurrentItem() {
-        listTourItems.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) -> {
-            if ((newValue != null) && (oldValue) != (newValue)) {
-                currentItem = newValue;
             }
         }));
     }

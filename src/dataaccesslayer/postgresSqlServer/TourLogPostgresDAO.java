@@ -15,8 +15,12 @@ import java.util.List;
 public class TourLogPostgresDAO implements ITourLogDAO {
 
     private final String SQL_FIND_BY_ID = "SELECT * FROM public.\"TourLogs\" WHERE \"Id\"=CAST(? AS INTEGER);";
-    private final String SQL_FIND_BY_TOURITEM = "SELECT * FROM public.\"TourLogs\" WHERE \"TourItemId\"=CAST(? AS INTEGER);";
-    private final String SQL_INSERT_NEW_ITEMLOG = "INSERT INTO public.\"TourLogs\" (\"LogText\", \"TourItemId\") VALUES (?, CAST(? AS INTEGER));";
+    private final String SQL_DELETE_BY_ID = "DELETE FROM public.\"TourLogs\" WHERE \"Id\"=CAST(? AS INTEGER);";
+    private final String SQL_UPDATE_BY_ID = "UPDATE public.\"TourLogs\" set \"Date\" = ?, \"Report\" = ?, \"Distance\" = ?, \"Time\" = ?, \"Rating\" = ?," +
+            " \"Weather\" = ?, \"Speed\" = ?, \"Altitude\" = ?, \"Difficulty\" = ?, \"Calories\" = ? WHERE \"Id\"=CAST(? AS INTEGER);";
+    private final String SQL_FIND_BY_TOURITEM = "SELECT * FROM public.\"TourLogs\" WHERE \"fk_TourId\"=CAST(? AS INTEGER);";
+    private final String SQL_INSERT_NEW_ITEMLOG = "INSERT INTO public.\"TourLogs\" (\"fk_TourId\", \"Date\", \"Report\", \"Distance\", " +
+            "\"Time\", \"Rating\", \"Weather\", \"Speed\", \"Altitude\", \"Difficulty\", \"Calories\") VALUES (CAST(? AS INTEGER), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     private IDatabase database;
     private ITourItemDAO tourItemDAO;
@@ -36,11 +40,45 @@ public class TourLogPostgresDAO implements ITourLogDAO {
     }
 
     @Override
-    public TourLog AddNewItemLog(String logText, TourItem logItem) throws SQLException {
+    public void DeleteById(Integer itemId) throws SQLException {
         ArrayList<Object> parameters = new ArrayList<>();
-        parameters.add(logText);
-        parameters.add(logItem.getId());
+        parameters.add(itemId);
+        database.delete(SQL_DELETE_BY_ID, itemId);
+    }
 
+    @Override
+    public TourLog UpdateLogById(TourLog genLog, Integer id) throws SQLException {
+        ArrayList<Object> parameters = new ArrayList<>();
+        parameters.add(genLog.getDate());
+        parameters.add(genLog.getReport());
+        parameters.add(genLog.getDistance());
+        parameters.add(genLog.getTime());
+        parameters.add(genLog.getRating());
+        parameters.add(genLog.getWeather());
+        parameters.add(genLog.getSpeed());
+        parameters.add(genLog.getAltitude());
+        parameters.add(genLog.getDifficulty());
+        parameters.add(genLog.getCalories());
+        parameters.add(genLog.getId());
+
+        database.UpdateLog(SQL_UPDATE_BY_ID, parameters);
+        return FindById(genLog.getId());
+    }
+
+    @Override
+    public TourLog AddNewItemLog(TourLog log, TourItem tourItem) throws SQLException {
+        ArrayList<Object> parameters = new ArrayList<>();
+        parameters.add(tourItem.getId());
+        parameters.add(log.getDate());
+        parameters.add(log.getReport());
+        parameters.add(log.getDistance());
+        parameters.add(log.getTime());
+        parameters.add(log.getRating());
+        parameters.add(log.getWeather());
+        parameters.add(log.getSpeed());
+        parameters.add(log.getAltitude());
+        parameters.add(log.getDifficulty());
+        parameters.add(log.getCalories());
         int resultId = database.InsertNew(SQL_INSERT_NEW_ITEMLOG, parameters);
         return FindById(resultId);
     }

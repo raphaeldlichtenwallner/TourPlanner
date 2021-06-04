@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ITourLogDAO {
     TourLog FindById(Integer logId) throws SQLException;
-    TourLog AddNewItemLog(String logText, TourItem logItem) throws SQLException;
+    void DeleteById(Integer itemId) throws SQLException;
+    TourLog UpdateLogById(TourLog genLog, Integer id) throws SQLException;
+    TourLog AddNewItemLog(TourLog log, TourItem logItem) throws SQLException;
     List<TourLog> GetLogsForItem(TourItem item) throws SQLException;
 }

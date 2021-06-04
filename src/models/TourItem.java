@@ -1,21 +1,18 @@
 package models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
+@AllArgsConstructor
+@Getter @Setter
 public class TourItem {
 
-    @Getter @Setter public Integer Id;
-    @Getter @Setter public String Name;
-    @Getter @Setter public String Url;
-    @Getter @Setter public LocalDateTime CreationTime;
+    public Integer Id;
+    public String Name;
+    public String Description;
+    public String Distance;
+    public String Start;
+    public String End;
 
-    public TourItem(Integer id, String name, String url, LocalDateTime creationTime){
-        Id = id;
-        Name = name;
-        Url = url;
-        CreationTime = creationTime;
-    }
 }

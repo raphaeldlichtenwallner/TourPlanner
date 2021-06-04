@@ -6,6 +6,10 @@ import dataaccesslayer.dao.ITourLogDAO;
 import models.TourItem;
 import models.TourLog;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,6 +21,11 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     public List<TourItem> GetItems() throws SQLException {
         ITourItemDAO tourItemDAO = DALFactory.CreateTourItemDAO();
         return tourItemDAO.GetItems();
+    }
+
+    public List<TourLog> GetLogs(TourItem tourItem) throws SQLException {
+        ITourLogDAO tourLogDAO = DALFactory.CreateTourLogDAO();
+        return tourLogDAO.GetLogsForItem(tourItem);
     }
 
     @Override
@@ -36,14 +45,55 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     }
 
     @Override
-    public TourItem CreateTourItem(String name, String url, LocalDateTime creationDate) throws SQLException {
+    public TourItem CreateTourItem(String name, String description, String distance, String start, String end) throws SQLException {
         ITourItemDAO tourItemDAO = DALFactory.CreateTourItemDAO();
-        return tourItemDAO.AddNewItem(name, url, creationDate);
+        return tourItemDAO.AddNewItem(name, description, distance, start, end);
     }
 
     @Override
-    public TourLog CreateTourLog(String logText, TourItem item) throws SQLException {
+    public TourItem UpdateTourItem(Integer id, String name, String description, String distance, String start, String end) throws SQLException {
+        ITourItemDAO tourItemDAO = DALFactory.CreateTourItemDAO();
+        return tourItemDAO.UpdateTourById(id, name, description, distance, start, end);
+    }
+
+    @Override
+    public TourLog CreateTourLog(TourLog log, TourItem item) throws SQLException {
         ITourLogDAO tourLogDAO = DALFactory.CreateTourLogDAO();
-        return tourLogDAO.AddNewItemLog(logText, item);
+        return tourLogDAO.AddNewItemLog(log, item);
+    }
+
+    @Override
+    public TourLog UpdateLogItem(TourLog genLog, Integer id) throws SQLException {
+        ITourLogDAO tourLogDAO = DALFactory.CreateTourLogDAO();
+        return tourLogDAO.UpdateLogById(genLog, id);
+    }
+
+    @Override
+    public void DeleteTour(TourItem item) {
+        File file = new File("Images/" + item.getName() + ".jpg");
+        if(!file.delete()) {
+            System.out.println("delete did not work");
+        }
+        ITourItemDAO tourItemDAO = DALFactory.CreateTourItemDAO();
+        try {
+            tourItemDAO.DeleteById(item.getId());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void DeleteLog(TourLog log) {
+        ITourLogDAO tourLogDAO = DALFactory.CreateTourLogDAO();
+        try {
+            tourLogDAO.DeleteById(log.getId());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public TourItem GetItem(Integer id) throws SQLException {
+        return DALFactory.CreateTourItemDAO().FindById(id);
     }
 }
