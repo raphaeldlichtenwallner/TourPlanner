@@ -71,7 +71,6 @@ public class MainViewModel {
 
     public void searchAction() throws SQLException {
         tourItems.clear();
-
         List<TourItem> items = manager.Search(search.get(), false);
         tourItems.addAll(items);
     }
@@ -79,7 +78,6 @@ public class MainViewModel {
     public void clearAction() throws SQLException {
         tourItems.clear();
         search.set("");
-
         List<TourItem> items = manager.GetItems();
         tourItems.addAll(items);
     }
@@ -107,6 +105,11 @@ public class MainViewModel {
     public void removeItemAction() throws SQLException {
         manager.DeleteTour(currentTour.getValue());
         refresh();
+        try {
+            route.set(new Image(new FileInputStream("Images/placeholder.jpg")));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void editItemAction() throws IOException {
@@ -176,7 +179,6 @@ public class MainViewModel {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         LogWindowController controller =  loader.getController();
-        controller.setTour(currentTour.getValue());
         controller.setLog(tourLog);
         stage.setOnHiding(e ->{
             try {
@@ -186,5 +188,9 @@ public class MainViewModel {
                 throwables.printStackTrace();
             }
         });
+    }
+
+    public void saveTour() {
+        manager.saveTourToPdf(currentTour.getValue(), tourLogs);
     }
 }

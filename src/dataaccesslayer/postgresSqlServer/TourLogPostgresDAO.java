@@ -59,10 +59,10 @@ public class TourLogPostgresDAO implements ITourLogDAO {
         parameters.add(genLog.getAltitude());
         parameters.add(genLog.getDifficulty());
         parameters.add(genLog.getCalories());
-        parameters.add(genLog.getId());
+        parameters.add(id);
 
         database.UpdateLog(SQL_UPDATE_BY_ID, parameters);
-        return FindById(genLog.getId());
+        return FindById(id);
     }
 
     @Override

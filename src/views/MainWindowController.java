@@ -125,4 +125,8 @@ public class MainWindowController implements Initializable {
             }
         }));
     }
+
+    public void saveTour() {
+        mainViewModel.saveTour();
+    }
 }

@@ -1,5 +1,6 @@
 package businesslayer;
 
+import javafx.collections.ObservableList;
 import models.TourItem;
 import models.TourLog;
 
@@ -20,5 +21,5 @@ public interface TourPlannerManager {
 
     List<TourLog> GetLogs(TourItem newValue) throws SQLException;
 
-
+    void saveTourToPdf(TourItem value, ObservableList<TourLog> tourLogs);
 }

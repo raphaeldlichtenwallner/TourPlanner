@@ -3,15 +3,10 @@ package businesslayer;
 import dataaccesslayer.common.DALFactory;
 import dataaccesslayer.dao.ITourItemDAO;
 import dataaccesslayer.dao.ITourLogDAO;
+import javafx.collections.ObservableList;
 import models.TourItem;
 import models.TourLog;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +21,12 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     public List<TourLog> GetLogs(TourItem tourItem) throws SQLException {
         ITourLogDAO tourLogDAO = DALFactory.CreateTourLogDAO();
         return tourLogDAO.GetLogsForItem(tourItem);
+    }
+
+    @Override
+    public void saveTourToPdf(TourItem value, ObservableList<TourLog> tourLogs) {
+        IPDFCreator pdfCreator = new PDFCreator();
+        pdfCreator.CreatePdfForSingleTour(value, tourLogs);
     }
 
     @Override
@@ -70,10 +71,6 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
 
     @Override
     public void DeleteTour(TourItem item) {
-        File file = new File("Images/" + item.getName() + ".jpg");
-        if(!file.delete()) {
-            System.out.println("delete did not work");
-        }
         ITourItemDAO tourItemDAO = DALFactory.CreateTourItemDAO();
         try {
             tourItemDAO.DeleteById(item.getId());
