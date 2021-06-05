@@ -6,11 +6,24 @@ import dataaccesslayer.dao.ITourLogDAO;
 import javafx.collections.ObservableList;
 import models.TourItem;
 import models.TourLog;
+import org.json.JSONException;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class TourPlannerManagerImpl implements TourPlannerManager {
+
+    @Override
+    public String GetMapQuest(String name, String from, String to) throws IOException, JSONException, InterruptedException {
+        MapQuest mapquest = new MapQuest();
+        return mapquest.startMapQuest(name, from, to);
+    }
 
     @Override
     public List<TourItem> GetItems() throws SQLException {
@@ -27,6 +40,22 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     public void saveTourToPdf(TourItem tour, ObservableList<TourLog> tourLogs) {
         IPDFCreator pdfCreator = new PDFCreator();
         pdfCreator.CreatePdfForSingleTour(tour, tourLogs);
+    }
+
+    @Override
+    public void DeleteTourImage(String imagePath) {
+        Path path = Paths.get(imagePath);
+        try {
+            Files.delete(path);
+            System.out.println("File "
+                    + path.toAbsolutePath().toString()
+                    + " successfully removed");
+        } catch (IOException e) {
+            System.err.println("Unable to delete "
+                    + path.toAbsolutePath().toString()
+                    + " due to...");
+            e.printStackTrace();
+        }
     }
 
     @Override

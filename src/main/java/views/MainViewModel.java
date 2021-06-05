@@ -52,8 +52,10 @@ public class MainViewModel {
                 throwables.printStackTrace();
             }
             try {
-                route.set(new Image(new FileInputStream("Images/"+ newValue.getName() + ".jpg")));
-            } catch (FileNotFoundException e) {
+                FileInputStream inputStream = new FileInputStream("Images/"+ newValue.getName() + ".jpg");
+                route.set(new Image(inputStream));
+                inputStream.close();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -104,13 +106,10 @@ public class MainViewModel {
     }
 
     public void removeItemAction() throws SQLException {
+        String imagePath = ("Images/" + currentTour.getValue().getName() + ".jpg");
         manager.DeleteTour(currentTour.getValue());
         refresh();
-        try {
-            route.set(new Image(new FileInputStream("Images/placeholder.jpg")));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        manager.DeleteTourImage(imagePath);
     }
 
     public void editItemAction() throws IOException {
@@ -132,8 +131,10 @@ public class MainViewModel {
                 var tour = manager.GetItem(currentTour.getValue().getId());
                 title.set(tour.getName());
                 description.set(tour.getDescription());
-                route.set(new Image(new FileInputStream("Images/"+ tour.getName() + ".jpg")));
-            } catch (SQLException | FileNotFoundException throwables) {
+                FileInputStream inputStream = new FileInputStream("Images/"+ tour.getName() + ".jpg");
+                route.set(new Image(inputStream));
+                inputStream.close();
+            } catch (SQLException | IOException throwables) {
                 throwables.printStackTrace();
             }
         });

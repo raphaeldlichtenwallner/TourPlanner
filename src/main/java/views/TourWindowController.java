@@ -7,7 +7,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.TourItem;
+import org.json.JSONException;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -22,7 +25,7 @@ public class TourWindowController implements Initializable {
     public TextArea descriptionField;
 
 
-    public void addAction() throws SQLException {
+    public void addAction() throws SQLException, IOException, JSONException, InterruptedException {
         tourViewModel.addAction();
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
