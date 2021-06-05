@@ -24,9 +24,9 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     }
 
     @Override
-    public void saveTourToPdf(TourItem value, ObservableList<TourLog> tourLogs) {
+    public void saveTourToPdf(TourItem tour, ObservableList<TourLog> tourLogs) {
         IPDFCreator pdfCreator = new PDFCreator();
-        pdfCreator.CreatePdfForSingleTour(value, tourLogs);
+        pdfCreator.CreatePdfForSingleTour(tour, tourLogs);
     }
 
     @Override

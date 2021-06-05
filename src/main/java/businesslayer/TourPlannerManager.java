@@ -5,7 +5,6 @@ import models.TourItem;
 import models.TourLog;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface TourPlannerManager {

@@ -1,7 +1,6 @@
 package views;
 
 import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -44,7 +43,7 @@ public class MainWindowController implements Initializable {
     public TableColumn<TourLog,String> altitude;
     public TableColumn<TourLog,String> difficulty;
     public TableColumn<TourLog,String> calories;
-
+    public MenuItem saveTourFile;
 
 
     public MainWindowController() throws SQLException {
@@ -104,6 +103,7 @@ public class MainWindowController implements Initializable {
         listTourItems.getSelectionModel().selectedItemProperty().addListener(mainViewModel.getChangeListener());
         editTour.disableProperty().bind(listTourItems.getSelectionModel().selectedItemProperty().isNull());
         removeTour.disableProperty().bind(listTourItems.getSelectionModel().selectedItemProperty().isNull());
+        saveTourFile.disableProperty().bind(listTourItems.getSelectionModel().selectedItemProperty().isNull());
         addLog.disableProperty().bind(listTourItems.getSelectionModel().selectedItemProperty().isNull());
         editLog.disableProperty().bind(table.getSelectionModel().selectedItemProperty().isNull());
         removeLog.disableProperty().bind(table.getSelectionModel().selectedItemProperty().isNull());

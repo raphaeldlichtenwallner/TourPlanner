@@ -5,5 +5,5 @@ import models.TourItem;
 import models.TourLog;
 
 public interface IPDFCreator {
-    void CreatePdfForSingleTour (TourItem value, ObservableList<TourLog> tourLogs);
+    void CreatePdfForSingleTour (TourItem tour, ObservableList<TourLog> tourLogs);
 }

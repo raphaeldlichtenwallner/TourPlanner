@@ -12,7 +12,7 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem fx:id="saveTourFile" mnemonicParsing="false" onAction="#saveTour" text="Save Tour" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">

@@ -4,11 +4,6 @@ import businesslayer.TourPlannerManager;
 import businesslayer.TourPlannerManagerFactory;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
 import lombok.Getter;
 import models.TourItem;
 

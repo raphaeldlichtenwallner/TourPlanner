@@ -3,7 +3,6 @@ package dataaccesslayer.dao;
 import models.TourItem;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ITourItemDAO {

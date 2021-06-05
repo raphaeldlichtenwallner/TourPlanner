@@ -1,5 +1,6 @@
 package views;
 
+
 import businesslayer.TourPlannerManager;
 import businesslayer.TourPlannerManagerFactory;
 import javafx.beans.property.*;
@@ -84,7 +85,7 @@ public class MainViewModel {
 
     public void genItemAction() throws IOException {
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("tourWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/tourWindow.fxml"));
         stage.setScene(new Scene(root, 400, 630));
         stage.setTitle("Manage Tour");
         stage.setMinWidth(630);
@@ -114,7 +115,7 @@ public class MainViewModel {
 
     public void editItemAction() throws IOException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("tourWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tourWindow.fxml"));
         stage.setScene(new Scene(loader.load(), 400, 630));
         stage.setTitle("Manage Tour");
         stage.setMinWidth(630);
@@ -140,7 +141,7 @@ public class MainViewModel {
 
     public void genLogAction() throws SQLException, IOException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("logWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/logWindow.fxml"));
         stage.setScene(new Scene(loader.load(), 280, 580));
         stage.setTitle("Manage Log");
         stage.setMinWidth(580);
@@ -169,7 +170,7 @@ public class MainViewModel {
 
     public void editLogAction(TourLog tourLog) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("logWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/logWindow.fxml"));
         stage.setScene(new Scene(loader.load(), 280, 580));
         stage.setTitle("Manage Log");
         stage.setMinWidth(580);
