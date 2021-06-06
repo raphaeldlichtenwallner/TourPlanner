@@ -1,18 +1,15 @@
 package dataaccesslayer.postgresSqlServer;
 
-import dataaccesslayer.common.DALFactory;
 import dataaccesslayer.common.IDatabase;
-import dataaccesslayer.dao.ITourItemDAO;
 import models.TourItem;
 import models.TourLog;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Database implements IDatabase {
 
-    private String connectionString;
+    private final String connectionString;
 
     public Database(String connectionString) {
         this.connectionString = connectionString;
@@ -94,7 +91,7 @@ public class Database implements IDatabase {
     }
 
     @Override
-    public <T> void delete(String sqlQuery, Integer id) throws SQLException {
+    public <T> void delete(String sqlQuery, Integer id) {
         try (Connection connection = CreateConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             preparedStatement.setInt(1, id);
@@ -142,7 +139,6 @@ public class Database implements IDatabase {
 
     private List<TourItem> QueryTourItemDataFromResultSet(ResultSet result) throws SQLException {
         List<TourItem> tourItemList = new ArrayList<TourItem>();
-
         while (result.next()) {
             tourItemList.add(new TourItem(
                     result.getInt("Id"),
@@ -153,13 +149,11 @@ public class Database implements IDatabase {
                     result.getString("End")
             ));
         }
-
         return tourItemList;
     }
 
     private List<TourLog> QueryTourLogDataFromResultSet(ResultSet result) throws SQLException {
         List<TourLog> tourLogList = new ArrayList<TourLog>();
-        ITourItemDAO tourItemDAO = DALFactory.CreateTourItemDAO();
         while (result.next()) {
             tourLogList.add(new TourLog(
                     result.getInt("Id"),
@@ -175,7 +169,6 @@ public class Database implements IDatabase {
                     result.getString("Calories")
             ));
         }
-
         return tourLogList;
     }
 }

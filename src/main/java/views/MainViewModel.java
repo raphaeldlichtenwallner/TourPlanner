@@ -1,6 +1,5 @@
 package views;
 
-
 import businesslayer.TourPlannerManager;
 import businesslayer.TourPlannerManagerFactory;
 import javafx.beans.property.*;
@@ -16,9 +15,9 @@ import javafx.stage.Stage;
 import lombok.Getter;
 import models.TourItem;
 import models.TourLog;
-
+import views.controller.LogWindowController;
+import views.controller.TourWindowController;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -140,7 +139,7 @@ public class MainViewModel {
         });
     }
 
-    public void genLogAction() throws SQLException, IOException {
+    public void genLogAction() throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/logWindow.fxml"));
         stage.setScene(new Scene(loader.load(), 280, 580));

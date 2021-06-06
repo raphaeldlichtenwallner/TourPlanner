@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
@@ -12,6 +14,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        Logger log = LogManager.getLogger(Main.class);
+        log.info("Application started");
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getClassLoader().getResource("mainWindow.fxml"))));
         primaryStage.setTitle("Tour Planner");
         primaryStage.setScene(new Scene(root, 1300, 900));

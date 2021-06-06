@@ -1,4 +1,4 @@
-package views;
+package views.controller;
 
 import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
@@ -7,15 +7,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.TourItem;
 import models.TourLog;
-
+import views.LogViewModel;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LogWindowController implements Initializable {
-    public Button addButton;
-
     public LogViewModel logViewModel = new LogViewModel();
+    public Button confirmButton;
     public TextField dateField;
     public TextField reportField;
     public TextField distanceField;
@@ -29,7 +28,7 @@ public class LogWindowController implements Initializable {
 
     public void addLog() throws SQLException {
         logViewModel.addLog();
-        Stage stage = (Stage) addButton.getScene().getWindow();
+        Stage stage = (Stage) confirmButton.getScene().getWindow();
         stage.close();
     }
 
@@ -53,5 +52,10 @@ public class LogWindowController implements Initializable {
         Bindings.bindBidirectional(altitudeField.textProperty(), logViewModel.getAltitude());
         Bindings.bindBidirectional(difficultyField.textProperty(), logViewModel.getDifficulty());
         Bindings.bindBidirectional(caloriesField.textProperty(), logViewModel.getCalories());
+        confirmButton.disableProperty().bind(dateField.textProperty().isEmpty().and(reportField.textProperty().isEmpty().and(
+                distanceField.textProperty().isEmpty()).and(timeField.textProperty().isEmpty()).and(
+                        ratingField.textProperty().isEmpty()).and(weatherField.textProperty().isEmpty()).and(
+                                avSpeedField.textProperty().isEmpty()).and(altitudeField.textProperty().isEmpty().and(
+                                        difficultyField.textProperty().isEmpty().and(caloriesField.textProperty().isEmpty())))));
     }
 }

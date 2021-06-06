@@ -1,0 +1,54 @@
+2021-06-06 14:04:23.623 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:05:04.145 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:10:15.928 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:10:44.965 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:15:36.664 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:18:02.211 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:18:22.097 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:19:27.879 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:19:38.839 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:23:52.117 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:24:48.149 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:25:02.038 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:25:24.272 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:25:46.847 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:25:57.411 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:26:30.888 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:26:41.473 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:28:14.441 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:28:23.468 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:30:08.992 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:30:21.114 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:32:29.067 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:32:52.649 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:36:35.878 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:36:52.431 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:37:01.210 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-06 15:45:11.804 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:46:00.332 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:46:15.316 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:47:48.959 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:59:06.942 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 15:59:25.299 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the calories contained incorrect characters
+2021-06-06 15:59:35.481 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the calories contained incorrect characters
+2021-06-06 16:25:38.670 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 16:26:33.613 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the inputs contained wrong characters
+2021-06-06 16:27:07.830 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the inputs contained wrong characters
+2021-06-06 16:28:41.357 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 16:29:05.391 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the inputs contained wrong characters
+2021-06-06 16:30:04.187 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the inputs contained wrong characters
+2021-06-06 16:30:27.591 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the inputs contained wrong characters
+2021-06-06 16:45:29.757 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 16:45:46.015 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the inputs contained wrong characters.
+2021-06-06 16:45:55.511 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log was successfully created.
+2021-06-06 16:46:03.639 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the inputs contained wrong characters.
+2021-06-06 16:46:33.319 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log was successfully created.
+2021-06-06 16:46:36.439 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log was deleted.
+2021-06-06 16:46:37.908 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log was deleted.
+2021-06-06 16:53:49.551 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 17:28:10.652 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 17:29:02.248 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the inputs contained wrong characters.
+2021-06-06 17:29:09.526 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log was successfully created.
+2021-06-06 17:29:20.881 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log was deleted.
+2021-06-06 17:35:07.431 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-06 17:35:16.257 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log couldn't be created because the inputs contained wrong characters.

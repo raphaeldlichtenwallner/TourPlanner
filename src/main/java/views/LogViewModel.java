@@ -10,15 +10,13 @@ import lombok.Getter;
 import lombok.Setter;
 import models.TourItem;
 import models.TourLog;
-
 import java.sql.SQLException;
 
 public class LogViewModel {
+
     private final TourPlannerManager manager = TourPlannerManagerFactory.getManager();
-
-    @Setter private TourItem tour = null;
     private Integer id = null;
-
+    @Setter private TourItem tour = null;
     @Getter private final ObservableList<TourLog> tourLogs = FXCollections.observableArrayList();
     @Getter private final StringProperty date = new SimpleStringProperty("");
     @Getter private final StringProperty report = new SimpleStringProperty("");

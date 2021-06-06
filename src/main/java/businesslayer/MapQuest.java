@@ -2,7 +2,6 @@ package businesslayer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -29,22 +28,24 @@ public class MapQuest {
 
         JSONObject route = new JSONObject(response.body()).getJSONObject("route");
         JSONObject boundingBox = route.getJSONObject("boundingBox");
-        //get lr and ul boces
+
         JSONObject lr = boundingBox.getJSONObject("lr");
         JSONObject ul = boundingBox.getJSONObject("ul");
-        //get distance
+
+
         double distance = route.getDouble("distance");
-        //store session id for static map request
-        String session = route.getString("sessionId");
+        String sessionId = route.getString("sessionId");
         double lrlat = lr.getDouble("lat");
         double lrlng = lr.getDouble("lng");
         double ullat = ul.getDouble("lat");
         double ullng = ul.getDouble("lng");
 
-        uri = "https://www.mapquestapi.com/staticmap/v5/map?key=" +key+"&size=1000,600&session="+session+"&boundingBox=" +lrlat+"," +lrlng+"," +ullat+"," +ullng;
+
+        uri = "https://www.mapquestapi.com/staticmap/v5/map?key=" +key+"&size=1000,600&session="+sessionId+"&boundingBox=" +lrlat+"," +lrlng+"," +ullat+"," +ullng;
         request = HttpRequest.newBuilder()
                 .uri(URI.create(uri))
                 .build();
+
 
         HttpResponse<byte[]> imageresponse = client.send(request, HttpResponse.BodyHandlers.ofByteArray());
         byte[] imgInBytes = imageresponse.body();

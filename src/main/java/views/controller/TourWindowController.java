@@ -1,4 +1,4 @@
-package views;
+package views.controller;
 
 import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
@@ -8,17 +8,15 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.TourItem;
 import org.json.JSONException;
-
-import java.io.FileNotFoundException;
+import views.TourViewModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TourWindowController implements Initializable {
-    public Button addButton;
-
     public TourViewModel tourViewModel = new TourViewModel();
+    public Button confirmButton;
     public TextField nameField;
     public TextField startField;
     public TextField endField;
@@ -27,7 +25,7 @@ public class TourWindowController implements Initializable {
 
     public void addAction() throws SQLException, IOException, JSONException, InterruptedException {
         tourViewModel.addAction();
-        Stage stage = (Stage) addButton.getScene().getWindow();
+        Stage stage = (Stage) confirmButton.getScene().getWindow();
         stage.close();
     }
 
@@ -37,6 +35,8 @@ public class TourWindowController implements Initializable {
         Bindings.bindBidirectional(startField.textProperty(), tourViewModel.getStart());
         Bindings.bindBidirectional(endField.textProperty(), tourViewModel.getEnd());
         Bindings.bindBidirectional(descriptionField.textProperty(), tourViewModel.getDescription());
+        confirmButton.disableProperty().bind(nameField.textProperty().isEmpty().or(startField.textProperty().isEmpty().or(endField.textProperty().isEmpty()))
+        );
     }
 
     public void setTour(TourItem value) {

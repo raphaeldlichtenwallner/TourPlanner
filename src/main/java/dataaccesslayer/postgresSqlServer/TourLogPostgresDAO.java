@@ -6,7 +6,6 @@ import dataaccesslayer.dao.ITourItemDAO;
 import dataaccesslayer.dao.ITourLogDAO;
 import models.TourItem;
 import models.TourLog;
-
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,32 +21,28 @@ public class TourLogPostgresDAO implements ITourLogDAO {
     private final String SQL_INSERT_NEW_ITEMLOG = "INSERT INTO public.\"TourLogs\" (\"fk_TourId\", \"Date\", \"Report\", \"Distance\", " +
             "\"Time\", \"Rating\", \"Weather\", \"Speed\", \"Altitude\", \"Difficulty\", \"Calories\") VALUES (CAST(? AS INTEGER), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-    private IDatabase database;
-    private ITourItemDAO tourItemDAO;
+    private final IDatabase database;
 
     public TourLogPostgresDAO() throws FileNotFoundException {
         this.database = DALFactory.GetDatabase();
-        this.tourItemDAO = DALFactory.CreateTourItemDAO();
     }
 
     @Override
-    public TourLog FindById(Integer logId) throws SQLException {
+    public void FindById(Integer logId) throws SQLException {
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(logId);
 
         List<TourLog> tourItems = database.TourReader(SQL_FIND_BY_ID, parameters, TourLog.class);
-        return tourItems.stream().findFirst().get();
+        tourItems.stream().findFirst().get();
     }
 
     @Override
     public void DeleteById(Integer itemId) throws SQLException {
-        ArrayList<Object> parameters = new ArrayList<>();
-        parameters.add(itemId);
         database.delete(SQL_DELETE_BY_ID, itemId);
     }
 
     @Override
-    public TourLog UpdateLogById(TourLog genLog, Integer id) throws SQLException {
+    public void UpdateLogById(TourLog genLog, Integer id) throws SQLException {
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(genLog.getDate());
         parameters.add(genLog.getReport());
@@ -62,11 +57,11 @@ public class TourLogPostgresDAO implements ITourLogDAO {
         parameters.add(id);
 
         database.UpdateLog(SQL_UPDATE_BY_ID, parameters);
-        return FindById(id);
+        FindById(id);
     }
 
     @Override
-    public TourLog AddNewItemLog(TourLog log, TourItem tourItem) throws SQLException {
+    public void AddNewItemLog(TourLog log, TourItem tourItem) throws SQLException {
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(tourItem.getId());
         parameters.add(log.getDate());
@@ -79,8 +74,9 @@ public class TourLogPostgresDAO implements ITourLogDAO {
         parameters.add(log.getAltitude());
         parameters.add(log.getDifficulty());
         parameters.add(log.getCalories());
+
         int resultId = database.InsertNew(SQL_INSERT_NEW_ITEMLOG, parameters);
-        return FindById(resultId);
+        FindById(resultId);
     }
 
     @Override

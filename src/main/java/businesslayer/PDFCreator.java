@@ -5,15 +5,11 @@ import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.ObservableList;
 import models.TourItem;
 import models.TourLog;
-
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 
-public class PDFCreator implements IPDFCreator {
+public class PDFCreator{
 
-    @Override
     public void CreatePdfForSingleTour(TourItem tour, ObservableList<TourLog> tourLogs) {
         Document document = new Document();
         String name = tour.getName();

@@ -4,7 +4,6 @@ import dataaccesslayer.common.DALFactory;
 import dataaccesslayer.common.IDatabase;
 import dataaccesslayer.dao.ITourItemDAO;
 import models.TourItem;
-
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,8 +16,7 @@ public class TourItemPostgresDAO implements ITourItemDAO {
     private final String SQL_UPDATE_BY_ID = "UPDATE public.\"TourItems\" set \"Name\" = ?, \"Description\" = ?, \"Distance\" = ?, \"Start\" = ?, \"End\" = ? WHERE \"Id\"=CAST(? AS INTEGER);";
     private final String SQL_GET_ALL_ITEMS = "SELECT * FROM public.\"TourItems\";";
     private final String SQL_INSERT_NEW_ITEM = "INSERT INTO public.\"TourItems\" (\"Name\", \"Description\", \"Distance\", \"Start\", \"End\") VALUES (?, ?, ?, ?, ?);";
-
-    private IDatabase database;
+    private final IDatabase database;
 
     public TourItemPostgresDAO() throws FileNotFoundException {
         database = DALFactory.GetDatabase();
@@ -35,13 +33,11 @@ public class TourItemPostgresDAO implements ITourItemDAO {
 
     @Override
     public void DeleteById(Integer itemId) throws SQLException {
-        ArrayList<Object> parameters = new ArrayList<>();
-        parameters.add(itemId);
         database.delete(SQL_DELETE_BY_ID, itemId);
     }
 
     @Override
-    public TourItem UpdateTourById(Integer itemId, String name, String description, String distance, String start, String end) throws SQLException {
+    public void UpdateTourById(Integer itemId, String name, String description, String distance, String start, String end) throws SQLException {
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(name);
         parameters.add(description);
@@ -51,11 +47,11 @@ public class TourItemPostgresDAO implements ITourItemDAO {
         parameters.add(itemId);
 
         database.UpdateItem(SQL_UPDATE_BY_ID, parameters);
-        return FindById(itemId);
+        FindById(itemId);
     }
 
     @Override
-    public TourItem AddNewItem(String name, String description, String distance, String start, String end) throws SQLException {
+    public void AddNewItem(String name, String description, String distance, String start, String end) throws SQLException {
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(name);
         parameters.add(description);
@@ -64,7 +60,7 @@ public class TourItemPostgresDAO implements ITourItemDAO {
         parameters.add(end);
 
         int resultId = database.InsertNew(SQL_INSERT_NEW_ITEM, parameters);
-        return FindById(resultId);
+        FindById(resultId);
     }
 
     @Override

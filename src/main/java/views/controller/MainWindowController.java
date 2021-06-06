@@ -1,4 +1,4 @@
-package views;
+package views.controller;
 
 import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 import lombok.SneakyThrows;
 import models.TourItem;
 import models.TourLog;
-
+import views.MainViewModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -16,23 +16,20 @@ import java.util.ResourceBundle;
 
 
 public class MainWindowController implements Initializable {
-    public TextField searchField;
-    public ListView<TourItem> listTourItems;
-    public Label description;
-    public ImageView route;
-
-
-    public Label titleName;
-
-
-    public TableView<TourLog> table;
 
     public MainViewModel mainViewModel = new MainViewModel();
+    public TableView<TourLog> table;
+    public ListView<TourItem> listTourItems;
+    public TextField searchField;
+    public Label description;
+    public ImageView route;
+    public Label titleName;
     public Button editLog;
     public Button addLog;
     public Button removeTour;
     public Button editTour;
     public Button removeLog;
+    public MenuItem saveTourFile;
     public TableColumn<TourLog,String> date;
     public TableColumn<TourLog,String> report;
     public TableColumn<TourLog,String> distance;
@@ -43,7 +40,6 @@ public class MainWindowController implements Initializable {
     public TableColumn<TourLog,String> altitude;
     public TableColumn<TourLog,String> difficulty;
     public TableColumn<TourLog,String> calories;
-    public MenuItem saveTourFile;
 
 
     public MainWindowController() throws SQLException {
@@ -61,7 +57,7 @@ public class MainWindowController implements Initializable {
         mainViewModel.genItemAction();
     }
 
-    public void genLogAction() throws SQLException, IOException {
+    public void genLogAction() throws IOException {
         mainViewModel.genLogAction();
     }
 

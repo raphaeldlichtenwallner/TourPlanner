@@ -2,7 +2,6 @@ package dataaccesslayer.common;
 
 import models.TourItem;
 import models.TourTypes;
-
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.List;
