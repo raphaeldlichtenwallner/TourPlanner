@@ -30,17 +30,17 @@ public class PDFCreator{
             logs.setAlignment(Element.ALIGN_CENTER);
             document.add(logs);
 
-            for (int i = 0; i < tourLogs.size(); i++) {
-                document.add(new Paragraph("Date: " + tourLogs.get(i).getDate()));
-                document.add(new Paragraph("Report: " + tourLogs.get(i).getReport()));
-                document.add(new Paragraph("Distance: " + tourLogs.get(i).getDistance()));
-                document.add(new Paragraph("Time: " + tourLogs.get(i).getTime()));
-                document.add(new Paragraph("Rating: " + tourLogs.get(i).getRating()));
-                document.add(new Paragraph("Weather: " + tourLogs.get(i).getWeather()));
-                document.add(new Paragraph("Speed: " + tourLogs.get(i).getSpeed()));
-                document.add(new Paragraph("Altitude: " + tourLogs.get(i).getAltitude()));
-                document.add(new Paragraph("Difficulty: " + tourLogs.get(i).getDifficulty()));
-                document.add(new Paragraph("Calories: " + tourLogs.get(i).getCalories()));
+            for (TourLog tourLog : tourLogs) {
+                document.add(new Paragraph("Date: " + tourLog.getDate()));
+                document.add(new Paragraph("Report: " + tourLog.getReport()));
+                document.add(new Paragraph("Distance: " + tourLog.getDistance()));
+                document.add(new Paragraph("Time: " + tourLog.getTime()));
+                document.add(new Paragraph("Rating: " + tourLog.getRating()));
+                document.add(new Paragraph("Weather: " + tourLog.getWeather()));
+                document.add(new Paragraph("Speed: " + tourLog.getSpeed()));
+                document.add(new Paragraph("Altitude: " + tourLog.getAltitude()));
+                document.add(new Paragraph("Difficulty: " + tourLog.getDifficulty()));
+                document.add(new Paragraph("Calories: " + tourLog.getCalories()));
                 document.add(new Paragraph("\n"));
             }
             document.close();

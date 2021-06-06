@@ -105,10 +105,8 @@ public class MainViewModel {
     }
 
     public void removeItemAction() throws SQLException {
-        String imagePath = ("Images/" + currentTour.getValue().getName() + ".jpg");
         manager.DeleteTour(currentTour.getValue());
         refresh();
-        manager.DeleteTourImage(imagePath);
     }
 
     public void editItemAction() throws IOException {

@@ -23,6 +23,6 @@ public class InputValidator{
     }
 
     public boolean checksIfDateFormatIsCorrect(String value){
-        return value.matches("([0-9]{2}[/][0-9]{2})?([/][0-9]{2})?");
+        return value.matches("([0-9]{2}[/][0-9]{2}([/][0-9]{2})?)?");
     }
 }

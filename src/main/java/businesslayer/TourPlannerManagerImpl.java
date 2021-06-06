@@ -133,6 +133,7 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
             throwables.printStackTrace();
             logger.error("Some error occurred trying to delete a Tour.");
         }
+        DeleteTourImage("Images/" + item.getName() + ".jpg");
     }
 
     @Override
