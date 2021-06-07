@@ -108,3 +108,5 @@
 2021-06-07 15:59:36.474 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour was deleted.
 2021-06-07 15:59:36.475 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour image was successfully removed.
 2021-06-07 16:00:27.967 [main] INFO  businesslayer.TourPlannerManager - Tour image was successfully removed.
+2021-06-07 16:23:13.269 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 16:25:33.308 [JavaFX Application Thread] INFO  views.Main - Application started
