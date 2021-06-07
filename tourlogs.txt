@@ -81,3 +81,30 @@
 2021-06-06 23:10:46.884 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log was successfully created.
 2021-06-06 23:11:03.287 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log was successfully changed.
 2021-06-06 23:11:06.005 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Log was deleted.
+2021-06-07 12:49:27.239 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 12:50:04.680 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour was successfully created.
+2021-06-07 13:30:11.982 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 13:32:41.660 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 13:34:06.244 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 13:38:02.437 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 13:39:19.465 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 13:42:35.253 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 13:43:04.386 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 13:48:39.000 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 13:49:28.624 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour was successfully created.
+2021-06-07 13:50:00.659 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 13:50:51.538 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour was successfully created.
+2021-06-07 14:23:33.168 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 15:52:56.547 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 15:53:14.785 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour was successfully created.
+2021-06-07 15:53:58.830 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour was deleted.
+2021-06-07 15:53:58.831 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour image was successfully removed.
+2021-06-07 15:57:01.328 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 15:57:15.577 [JavaFX Application Thread] INFO  views.TourViewModel - Address input contained wrong values and no tour was added or changed.
+2021-06-07 15:57:44.518 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 15:58:24.818 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 15:59:05.406 [JavaFX Application Thread] INFO  views.Main - Application started
+2021-06-07 15:59:22.961 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour was successfully created.
+2021-06-07 15:59:36.474 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour was deleted.
+2021-06-07 15:59:36.475 [JavaFX Application Thread] INFO  businesslayer.TourPlannerManager - Tour image was successfully removed.
+2021-06-07 16:00:27.967 [main] INFO  businesslayer.TourPlannerManager - Tour image was successfully removed.

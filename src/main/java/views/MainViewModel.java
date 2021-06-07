@@ -31,12 +31,14 @@ public class MainViewModel {
 
     private final TourPlannerManager manager = TourPlannerManagerFactory.getManager();
     private final Property<TourItem> currentTour = new SimpleObjectProperty<>();
+    private String adjacent;
 
     @Getter private final ObservableList<TourItem> tourItems = FXCollections.observableArrayList();
     @Getter private final ObservableList<TourLog> tourLogs = FXCollections.observableArrayList();
     @Getter private final StringProperty search = new SimpleStringProperty("");
     @Getter private final StringProperty title = new SimpleStringProperty("");
     @Getter private final StringProperty description = new SimpleStringProperty("");
+    @Getter private final StringProperty adjacentTour = new SimpleStringProperty("");
     @Getter private final ObjectProperty<Image> route = new SimpleObjectProperty<>();
 
     @Getter private final ChangeListener<TourItem> changeListener = (observableValue, oldValue, newValue) -> {
@@ -44,6 +46,13 @@ public class MainViewModel {
             currentTour.setValue(newValue);
             title.set(newValue.getName());
             description.set(newValue.getDescription());
+            adjacent = ("Following tours start where yours finishes if you want to prolong your tour.\n");
+            tourItems.forEach((item) -> {
+                if(item.getStart().equals(currentTour.getValue().getEnd())) {
+                    adjacent = adjacent.concat(item.getName()).concat("\n");
+                }
+            });
+            adjacentTour.setValue(adjacent);
             tourLogs.clear();
             try {
                 tourLogs.addAll(manager.GetLogs(newValue));

@@ -114,6 +114,11 @@
             </ImageView>
           </AnchorPane>
         </Tab>
+        <Tab text="Adjacent Tour">
+          <AnchorPane>
+            <Label fx:id="adjacentTour" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0"/>
+          </AnchorPane>
+        </Tab>
       </TabPane>
     </AnchorPane>
     <AnchorPane minHeight="100.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

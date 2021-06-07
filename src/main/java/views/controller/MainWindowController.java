@@ -21,9 +21,10 @@ public class MainWindowController implements Initializable {
     public TableView<TourLog> table;
     public ListView<TourItem> listTourItems;
     public TextField searchField;
-    public Label description;
-    public ImageView route;
     public Label titleName;
+    public Label description;
+    public Label adjacentTour;
+    public ImageView route;
     public Button editLog;
     public Button addLog;
     public Button removeTour;
@@ -40,6 +41,7 @@ public class MainWindowController implements Initializable {
     public TableColumn<TourLog,String> altitude;
     public TableColumn<TourLog,String> difficulty;
     public TableColumn<TourLog,String> calories;
+
 
 
     public MainWindowController() throws SQLException {
@@ -83,6 +85,7 @@ public class MainWindowController implements Initializable {
         Bindings.bindBidirectional(searchField.textProperty(), mainViewModel.getSearch());
         Bindings.bindBidirectional(titleName.textProperty(), mainViewModel.getTitle());
         Bindings.bindBidirectional(description.textProperty(), mainViewModel.getDescription());
+        Bindings.bindBidirectional(adjacentTour.textProperty(), mainViewModel.getAdjacentTour());
         Bindings.bindBidirectional(route.imageProperty(), mainViewModel.getRoute());
         table.setItems(mainViewModel.getTourLogs());
         date.setCellValueFactory(new PropertyValueFactory<>("Date"));
